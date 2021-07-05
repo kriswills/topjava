@@ -25,7 +25,7 @@ public class MealServlet extends HttpServlet {
         log.debug("redirect to meals");
 
         //      response.sendRedirect("meals.jsp");
-        request.setAttribute("mealsList", UserMealsUtil.MEAL_LIST);
+      //  request.setAttribute("mealsList", UserMealsUtil.MEAL_LIST);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("meals.jsp");
         requestDispatcher.forward(request, response);
