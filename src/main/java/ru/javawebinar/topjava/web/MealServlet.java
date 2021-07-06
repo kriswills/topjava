@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -21,9 +21,15 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.debug("redirect to meals");
+        log.info("redirect to meals");
 
-        request.setAttribute("mealList", MealsUtil.MEAL_LIST);
+   //     List<MealTo> mealList = MealsUtil.getFilteredTos(MealsUtil.MEAL_LIST, LocalTime.MIN, LocalTime.MAX, 2000);
+
+                /*MealsUtil.MEAL_LIST.stream()
+                .map(m -> new MealTo(m.getDateTime(), m.getDescription(), m.getCalories(), m.getCalories() > MealsUtil.CALORIES_PER_DAY))
+                .collect(Collectors.toList())*/;
+
+        request.setAttribute("mealList", MealsUtil.getWithExceeded(MealsUtil.MEAL_LIST, 2000));
 
         String path = "/meals.jsp";
         ServletContext servletContext = getServletContext();
