@@ -12,7 +12,7 @@ import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
 
 public class MealTestData {
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
-    public static final int MEAL1_ID = START_SEQ;
+    public static final int MEAL1_ID = START_SEQ + 2;
     public static final int NOT_FOUND = 10;
 
     public static final Meal MEAL1 = new Meal(MEAL1_ID, of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500);
@@ -39,7 +39,7 @@ public class MealTestData {
     }
 
     public static void assertMatch(Meal actual, Meal expected) {
-        assertThat(actual).usingRecursiveComparison(expected);
+        assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
     }
 
     public static void assertMatch(Iterable<Meal> actual, Meal... expected) {
