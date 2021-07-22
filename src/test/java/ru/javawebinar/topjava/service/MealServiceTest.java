@@ -34,9 +34,6 @@ public class MealServiceTest {
 
     @Autowired
     private MealService service;
-    @Autowired
-    private MealRepository repository;
-
 
     @Test
     public void get() {
@@ -47,7 +44,7 @@ public class MealServiceTest {
     @Test
     public void delete() {
         service.delete(MEAL1_ID, USER_ID);
-        Assert.assertNull(repository.get(MEAL1_ID, USER_ID));
+        Assert.assertNull(service.get(MEAL1_ID, USER_ID));
     }
 
     @Test
